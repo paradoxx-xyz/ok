@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Starry Night</title>
+<style>
+body {
+  background-color: #000;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Courier New', Courier, monospace;
+  color: #fff;
+}
+
+.container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.shooting-star {
+  position: absolute;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(to right, rgba(255,255,255,0), #fff, rgba(255,255,255,0));
+  transform: rotate(45deg);
+  animation: shoot 3s linear infinite;
+}
+
+@keyframes shoot {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(50%) translateY(50%) rotate(45deg);
+  }
+}
+
+.buttons {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+button {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 10px 15px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.poem {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  text-align: right;
+  max-width: 400px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="buttons">
+    <button>Home</button>
+    <button>Menu</button>
+  </div>
+
+  <div class="poem">
+    <h2>Stars</h2>
+    <p>Tiny diamonds in the night,<br>
+    Twinkling with their gentle light.<br>
+    Guiding lost souls with their grace,<br>
+    Across the vastness of space.</p>
+  </div>
+
+  <script>
+    // Function to generate random stars
+    function createStars(numStars) {
+      const container = document.querySelector('.container');
+      for (let i = 0; i < numStars; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.left = `${Math.random() * 100}%`;
+        container.appendChild(star);
+      }
+    }
+
+    // Function to generate shooting stars
+    function createShootingStars(numStars) {
+      const container = document.querySelector('.container');
+      for (let i = 0; i < numStars; i++) {
+        const star = document.createElement('div');
+        star.classList.add('shooting-star');
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.animationDelay = `${Math.random() * 10}s`;
+        container.appendChild(star);
+      }
+    }
+
+    createStars(200); 
+    createShootingStars(5); 
+	
+  </script>
+</div>
+</body>
+<h5> create by @sharath </h5>
+</html>
